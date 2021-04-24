@@ -1,0 +1,13 @@
+args: Namespace(acq_levels=10, batch_size=200, checkpoint_path='none', cog_levels=10, data_dir='data/new_mini_09/', debug=False, decay=1e-06, device=-1, dim=64, dropout=0.0, eval_every=0, gamma=0.93, lamb=40.0, log_every=0, lr=0.001, model='iekt', n_epochs=300, n_layer=1, run_dir='run/1/', run_exist=False, save_every=50, seq_len=200)
+Dataset split train loaded
+Dataset split valid loaded
+{'debug': False, 'run_exist': False, 'run_dir': 'run/1/', 'data_dir': 'data/new_mini_09/', 'checkpoint_path': 'none', 'log_every': 0, 'eval_every': 0, 'save_every': 50, 'device': device(type='cpu'), 'model': 'iekt', 'n_layer': 1, 'dim': 64, 'n_epochs': 300, 'batch_size': 200, 'lr': 0.001, 'dropout': 0.0, 'seq_len': 200, 'gamma': 0.93, 'cog_levels': 10, 'acq_levels': 10, 'lamb': 40.0, 'decay': 1e-06, 'max_concepts': 4, 'concept_num': 80, 'problem_number': 1766, 'prob_dim': 11}
+training...
+Epoch: 000, Loss: 0.3593635, acc: 0.6760259, auc: 0.5003927
+Epoch: 001, Loss: 0.7522403, acc: 0.7149028, auc: 0.5406098
+Epoch: 002, Loss: 0.7822649, acc: 0.7192225, auc: 0.5927697
+Epoch: 003, Loss: 0.7731117, acc: 0.7192225, auc: 0.5872719
+Epoch: 004, Loss: 0.7701629, acc: 0.7192225, auc: 0.5948256
+Epoch: 005, Loss: 0.7692426, acc: 0.7192225, auc: 0.6229383
+Epoch: 006, Loss: 0.7660366, acc: 0.7192225, auc: 0.6173019
+Epoch: 007, Loss: 0.7617797, acc: 0.7192225, auc: 0.6331485
