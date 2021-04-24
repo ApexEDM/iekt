@@ -13,7 +13,7 @@ python main.py --run_dir runs/RUN_DIR
 ```
 # Citation
 You are more than welcome to cite our paper:
-···
+```
 @inproceedings{long2021tracing,
 	title={Tracing Knowledge State with Individual Cognition and Acquisition Estimation},
 	author={Long, Ting and Liu, Yunfei and Shen, Jian and Zhang, Weinan and Yu, Yong},
@@ -21,5 +21,5 @@ You are more than welcome to cite our paper:
 	year={2021},
 	organization={ACM}
 }
-···
+```
 If you have any question, please feel free to contact longting@sjtu.edu.cn
