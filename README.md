@@ -22,4 +22,4 @@ You are more than welcome to cite our paper:
 	organization={ACM}
 }
 ```
-If you have any question, please feel free to contact longting@sjtu.edu.cn
+If you have any question, please contact longting@sjtu.edu.cn
