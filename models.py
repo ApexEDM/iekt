@@ -21,11 +21,7 @@ class iekt(nn.Module):
         self.acq_matrix = nn.Parameter(torch.randn(args.acq_levels, args.dim * 2).to(args.device), requires_grad=True)
         self.select_preemb = modules.funcs(args.n_layer, args.dim * 3, args.cog_levels, args.dropout) 
         self.checker_emb = modules.funcs(args.n_layer, args.dim * 12, args.acq_levels, args.dropout) 
-
         self.prob_emb = nn.Parameter(torch.randn(args.problem_number - 1, args.dim).to(args.device), requires_grad=True)
-        self.prob_cat = torch.cat([
-            torch.zeros(1, args.dim).to(args.device),
-            self.prob_emb], dim = 0)
         self.gru_h = modules.mygru(0, args.dim * 4, args.dim)
         showi0 = []
         for i in range(0, args.n_epochs):
@@ -50,7 +46,11 @@ class iekt(nn.Module):
         
         concept_level_rep = torch.sum(related_concepts, dim = 1) / div
         
-        item_emb = self.prob_cat[prob_ids]
+        prob_cat = torch.cat([
+            torch.zeros(1, self.node_dim).to(self.device),
+            self.prob_emb], dim = 0)
+        
+        item_emb = prob_cat[prob_ids]
 
         v = torch.cat(
             [concept_level_rep,
@@ -63,6 +63,7 @@ class iekt(nn.Module):
         return F.softmax(self.select_preemb(x), dim = softmax_dim)
 
     def obtain_v(self, this_input, h, x, emb):
+        
         last_show, problem, related_concept_index, show_count, operate, filter0, prob_ids, related_concept_matrix = this_input
 
         data_len = operate.size()[0]
