@@ -17,15 +17,6 @@ import numpy as np
 import random
 import math
 
-def setup_seed(seed):
-     torch.manual_seed(seed)
-     torch.cuda.manual_seed_all(seed)
-     np.random.seed(seed)
-     random.seed(seed)
-     torch.backends.cudnn.deterministic = True
-
-setup_seed(20)
-
 
 parser = argparse.ArgumentParser(description='IEKT')
 parser.add_argument('--debug',          action='store_true',        help='log debug messages or not')
