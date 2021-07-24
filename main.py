@@ -43,10 +43,10 @@ parser.add_argument('--lamb',        type=float, default=40.0,   help='hyper par
 parser.add_argument('--decay',type=float, default=1e-6,   help='hyper parameter for decay') 
 args = parser.parse_args() 
 
-# if args.debug:
-#     args.run_exist = True
-#     args.run_dir = 'debug'
-# os.makedirs(args.run_dir, exist_ok=args.run_exist)
+if args.debug:
+    args.run_exist = True
+    args.run_dir = 'debug'
+os.makedirs(args.run_dir, exist_ok=args.run_exist)
 
 
 log.basicConfig(
