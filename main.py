@@ -68,7 +68,7 @@ def preprocess():
     setattr(args, 'problem_number', problem_number)
     setattr(args, 'prob_dim', int(math.log(problem_number,2)) + 1)
     
-    for split in ['train', 'valid']:
+    for split in ['train', 'valid', 'test']:
         file_name = os.path.join(args.data_dir, 'dataset_%s.pkl' % split)
         if os.path.exists(file_name):
             with open(file_name, 'rb') as f:
@@ -81,7 +81,7 @@ def preprocess():
             log.info('Dataset split %s created and dumpped' % split)
 
     loaders = {}
-    for split in ['train', 'valid']:
+    for split in ['train', 'valid', 'test']:
         loaders[split] = DataLoader(
             datasets[split],
             batch_size=args.batch_size,
