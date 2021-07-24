@@ -34,7 +34,7 @@ def train(model, loaders, args):
             rt_x = torch.zeros(data_len, 1, args.dim * 2).to(args.device)
             for seqi in range(0, args.seq_len):
                 ques_h = torch.cat([
-                    model.get_ques_representation(x[1][seqi][6], x[1][seqi][2], x[1][seqi][5], x[1][seqi][4].size()[0]),
+                    model.get_ques_representation(x[1][seqi][6], x[1][seqi][2], x[1][seqi][5], x[1][seqi][5].size()[0]),
                     h], dim = 1)
                 flip_prob_emb = model.pi_cog_func(ques_h)
 
@@ -44,6 +44,7 @@ def train(model, loaders, args):
 
                 h_v, v, logits, rt_x = model.obtain_v(x[1][seqi], h, rt_x, emb_p)
                 prob = train_sigmoid(logits)
+
                 out_operate_groundtruth = x[1][seqi][4]
                 out_x_groundtruth = torch.cat([
                     h_v.mul(out_operate_groundtruth.repeat(1, h_v.size()[-1]).float()),
@@ -163,8 +164,10 @@ def train(model, loaders, args):
             
 
         show_loss = loss_all / len(loaders['train'].dataset)
-        acc, auc, auroc = evaluate(model, loaders['valid'], args)
-        log.info('Epoch: {:03d}, Loss: {:.7f}, acc: {:.7f}, auc: {:.7f}'.format(epoch, show_loss, acc, auc))
+        acc, auc = evaluate(model, loaders['valid'], args)
+        tacc, tauc = evaluate(model, loaders['test'], args)
+        log.info('Epoch: {:03d}, Loss: {:.7f}, valid acc: {:.7f}, valid auc: {:.7f}, test acc: {:.7f}, test auc: {:.7f}'.format(
+                        epoch, show_loss, acc, auc, tacc, tauc))
         
         if args.save_every > 0 and epoch % args.save_every == 0:
             torch.save(model, os.path.join(args.run_dir, 'params_%i.pt' % epoch))
@@ -192,7 +195,7 @@ def evaluate(model, loader, args):
         rt_x = torch.zeros(data_len, 1, args.dim * 2).to(args.device)
         for seqi in range(0, args.seq_len):
             ques_h = torch.cat([
-                    model.get_ques_representation(x[1][seqi][6], x[1][seqi][2], x[1][seqi][5], x[1][seqi][4].size()[0]),
+                    model.get_ques_representation(x[1][seqi][6], x[1][seqi][2], x[1][seqi][5], x[1][seqi][5].size()[0]),
                     h], dim = 1)
             flip_prob_emb = model.pi_cog_func(ques_h)
 
@@ -241,7 +244,7 @@ def evaluate(model, loader, args):
     acc = accuracy_score(y_tensor.cpu().numpy(), (hat_y_prob_tensor > 0.5).int().cpu().numpy())
     fpr, tpr, thresholds = metrics.roc_curve(y_tensor.cpu().numpy(), hat_y_prob_tensor.cpu().numpy(), pos_label=1)
     auc = metrics.auc(fpr, tpr)
-    auroc = 0
+   
 
-    return acc, auc, auroc
+    return acc, auc
 
