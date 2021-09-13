@@ -1,5 +1,5 @@
 # Tracing Knowledge State with Individual Cognition and Acquisition Estimation
-Thanks for your interest! This repository is the implementation of IEKT, which is proposed in the paper "[Tracing Knowledge State with Individual Cognition and Acquisition Estimation]()". The paper is accepted by SIGIR 2021.
+Thanks for your interest! This repository is the implementation of IEKT, which is proposed in the paper "[Tracing Knowledge State with Individual Cognition and Acquisition Estimation](https://github.com/githubg0/iekt/blob/main/Tracing%20Knowledge%20State%20with%20Individual%20Cognition%20and%20Acquisition%20Estimation.pdf)". The paper is accepted by SIGIR 2021.
 # Datasets
 ## ASS09 and ASS12: 
 You can download the original data in this [link](https://sites.google.com/site/assistmentsdata/home/assistment-2009-2010-data/skill-builder-data-2009-2010)
