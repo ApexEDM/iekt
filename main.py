@@ -32,7 +32,7 @@ parser.add_argument('--model',          type=str,   default='iekt',   help='run 
 parser.add_argument('--n_layer',type=int,   default=1,      help='number of mlp hidden layers in decoder')
 parser.add_argument('--dim',type=int,   default=64,     help='hidden size for nodes')
 parser.add_argument('--n_epochs',       type=int,   default=300,   help='number of epochs to train')
-parser.add_argument('--batch_size',     type=int,   default=200,      help='number of instances in a batch')
+parser.add_argument('--batch_size',     type=int,   default=32,      help='number of instances in a batch')
 parser.add_argument('--lr',             type=float, default=1e-3,   help='learning rate')
 parser.add_argument('--dropout',        type=float, default=0.0,   help='dropout') 
 parser.add_argument('--seq_len',       type=int, default=200,   help='the length of the sequence') 
